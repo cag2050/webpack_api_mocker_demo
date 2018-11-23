@@ -27,7 +27,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         before (app) {
             // console.log(app)
             // apiMocker(app, mocker)
-            apiMocker(app, path.resolve('mock/mocker'))
+            if (process.env.MOCK) {
+                apiMocker(app, path.resolve('mock/mocker'))
+            }
         },
         clientLogLevel: 'warning',
         historyApiFallback: {
