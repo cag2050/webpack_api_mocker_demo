@@ -4,14 +4,16 @@
             <thead>
                 <td>排名</td>
                 <td>仓库名</td>
-                <td>star数</td>
-                <td style="margin-left: 20px;">仓库全名</td>
+                <td style="width:100px;">star数</td>
+                <td>仓库全名</td>
+                <td>仓库地址</td>
             </thead>
             <tr v-for="(item, index) in items" :key="index">
                 <td>{{index + 1}}</td>
                 <td style="text-align: left;">{{item.name}}</td>
                 <td>{{item.stargazers_count}}</td>
-                <td style="float:left;text-align: left;margin-left: 20px;">{{item.full_name}}</td>
+                <td style="text-align: left;">{{item.full_name}}</td>
+                <td style="text-align: left;"><a :href="item.html_url" target="_blank">{{item.html_url}}</a></td>
             </tr>
         </table>
         <div v-show="loading">加载中...</div>
@@ -34,8 +36,8 @@ export default {
     },
     methods: {
         fetchList () {
-            // axios.get('https://api.github.com/search/repositories?q=language:javascript&sort=stars')
-            axios.get('https://api.github.com/search/repositories')
+            axios.get('https://api.github.com/search/repositories?q=language:javascript&sort=stars')
+            // axios.get('https://api.github.com/search/repositories')
                 .then(res => {
                     console.log(res)
                     this.items = res.data.items
