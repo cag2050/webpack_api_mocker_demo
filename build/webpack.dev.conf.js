@@ -25,8 +25,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // these devServer options should be customized in /config/index.js
     devServer: {
         before (app) {
-            // console.log(app)
-            // apiMocker(app, mocker)
             if (process.env.MOCK) {
                 apiMocker(app, path.resolve('mock/mocker'))
             }

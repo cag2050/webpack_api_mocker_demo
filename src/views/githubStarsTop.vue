@@ -34,13 +34,14 @@ export default {
     },
     methods: {
         fetchList () {
-            axios.get('https://api.github.com/search/repositories?q=language:javascript&sort=stars')
+            // axios.get('https://api.github.com/search/repositories?q=language:javascript&sort=stars')
+            axios.get('https://api.github.com/search/repositories')
                 .then(res => {
                     console.log(res)
                     this.items = res.data.items
                 })
                 .catch(err => {
-                    console.log(err)
+                    throw err
                 })
                 .finally(() => {
                     this.loading = false

@@ -1,5 +1,5 @@
 const proxy = {
-    'GET /api/user': {id: 1, username: 'kenny', sex: 6},
+    'GET /api/user': {id: 1, username: 'kenny', sex: 60},
     'GET /api/user/list': [
         {id: 1, username: 'kenny', sex: 6},
         {id: 2, username: 'kenny', sex: 6}
