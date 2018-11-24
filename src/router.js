@@ -11,6 +11,11 @@ export default new Router({
             path: '/',
             name: 'HelloWorld',
             component: HelloWorld
+        },
+        {
+            path: '/github_stars_top',
+            name: '',
+            component: () => import('./views/githubStarsTop')
         }
     ]
 })

@@ -2,7 +2,7 @@
     <div id="app">
         路由列表：
         <router-link to='/'>首页</router-link> |
-        <router-link to='/'>首页</router-link> |
+        <router-link to='/github_stars_top'>github里javascript仓库stars排名</router-link> |
         <router-view/>
     </div>
 </template>
