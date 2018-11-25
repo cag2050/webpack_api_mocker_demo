@@ -11,7 +11,7 @@
             <tr v-for="(item, index) in items" :key="index">
                 <td>{{index + 1}}</td>
                 <td style="text-align: left;">{{item.name}}</td>
-                <td>{{item.stargazers_count}}</td>
+                <td>{{item.stargazers_count.toLocaleString()}}</td>
                 <td style="text-align: left;">{{item.full_name}}</td>
                 <td style="text-align: left;"><a :href="item.html_url" target="_blank">{{item.html_url}}</a></td>
             </tr>
@@ -36,10 +36,9 @@ export default {
     },
     methods: {
         fetchList () {
-            axios.get('https://api.github.com/search/repositories?q=language:javascript&sort=stars')
-            // axios.get('https://api.github.com/search/repositories')
+            // axios.get('https://api.github.com/search/repositories?q=language:javascript&sort=stars')
+            axios.get('/search/repositories?q=language:javascript&sort=stars')
                 .then(res => {
-                    console.log(res)
                     this.items = res.data.items
                 })
                 .catch(err => {

@@ -26,7 +26,12 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     devServer: {
         before (app) {
             if (process.env.MOCK) {
-                apiMocker(app, path.resolve('mock/mocker'))
+                apiMocker(app, path.resolve('mock/mocker'), {
+                    proxy: {
+                        '/search/repositories*': 'https://api.github.com'
+                    },
+                    changeHost: true
+                })
             }
         },
         clientLogLevel: 'warning',
