@@ -10,7 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const apiMocker = require('webpack-api-mocker')
-// const mocker = require('../mock/mocker')
+const apiDomainMap = require('../mock/apiDomainMap')
 
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
@@ -27,9 +27,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         before (app) {
             if (process.env.MOCK) {
                 apiMocker(app, path.resolve('mock/mocker'), {
+                    // proxy：指定请求url，使用哪个域名前缀。
+                    proxy: apiDomainMap,
+                    /*
                     proxy: {
                         '/search/repositories*': 'https://api.github.com'
                     },
+                    */
                     changeHost: true
                 })
             }

@@ -37,7 +37,11 @@ export default {
     methods: {
         fetchList () {
             // axios.get('https://api.github.com/search/repositories?q=language:javascript&sort=stars')
-            axios.get('/search/repositories?q=language:javascript&sort=stars')
+            let params = {
+                q: 'language:javascript',
+                sort: 'stars'
+            }
+            axios.get('/search/repositories', {params: params})
                 .then(res => {
                     this.items = res.data.items
                 })
