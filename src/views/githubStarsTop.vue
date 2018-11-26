@@ -41,7 +41,7 @@ export default {
                 q: 'language:javascript',
                 sort: 'stars'
             }
-            axios.get('/search/repositories', {params: params})
+            axios.get('https://api.github.com/search/repositories', {params: params})
                 .then(res => {
                     this.items = res.data.items
                 })

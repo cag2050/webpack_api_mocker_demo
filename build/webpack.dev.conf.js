@@ -27,6 +27,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         before (app) {
             if (process.env.MOCK) {
                 apiMocker(app, path.resolve('mock/mocker'), {
+                    // 设置proxy后，运行`npm run dev-mock`后，会使用此处的域名前缀代替`npm run dev`时的域名前缀
                     // proxy：指定请求url，使用哪个域名前缀。
                     proxy: apiDomainMap,
                     /*
